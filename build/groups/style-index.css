@@ -1,0 +1,126 @@
+/*!**********************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/groups/style.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************/
+.groww-buddy-groups-blocks {
+  display: flex;
+  font-size: 14px;
+  padding: 0;
+  flex-direction: column;
+}
+.groww-buddy-groups-blocks .groww-buddy-group-block-item {
+  margin: 5px;
+  border: 1px solid #e8e8e8;
+  padding: 5px;
+  text-align: center;
+  background: #fff;
+  border-radius: 12px;
+}
+.groww-buddy-groups-blocks .groww-buddy-group-block-item .groww-buddy-group-block-item-title {
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+.groww-buddy-groups-blocks .groww-buddy-group-block-item .groww-buddy-group-block-item-title a {
+  text-decoration: none;
+}
+.groww-buddy-groups-blocks .groww-buddy-group-block-item .groww-buddy-group-block-item-cover {
+  text-align: center;
+  padding: 0 10px;
+}
+.groww-buddy-groups-blocks .groww-buddy-group-block-item .groww-buddy-group-block-item-cover img {
+  width: 100%;
+  border-radius: 12px;
+}
+.groww-buddy-groups-blocks .groww-buddy-group-block-item .groww-buddy-group-block-item-meta {
+  display: block;
+  font-size: 0.8em;
+  color: #999;
+}
+.groww-buddy-groups-blocks .groww-buddy-group-block-item .groww-buddy-group-block-item-meta span:before {
+  background-color: #8d8f97;
+  border-radius: 100%;
+  content: "";
+  display: inline-block;
+  height: 4px;
+  margin: 0 6px 0 5px;
+  vertical-align: middle;
+  width: 4px;
+}
+.groww-buddy-groups-blocks .groww-buddy-group-block-item .groww-buddy-group-block-item-actions {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+.groww-buddy-groups-blocks .groww-buddy-group-block-item .groww-buddy-group-block-item-actions .groww-buddy-group-block-item-link {
+  background: #f9f9f9;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #eeeeee;
+  text-decoration: none;
+}
+.groww-buddy-groups-blocks .groww-buddy-group-block-item .groww-buddy-group-block-item-actions .groww-buddy-group-block-item-link:hover {
+  background: #eeeeee;
+}
+
+.groww-buddy-groups-blocks--list .groww-buddy-group-block-item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.groww-buddy-groups-blocks--list .groww-buddy-group-block-item .groww-buddy-group-block-item-cover {
+  text-align: center;
+  padding: 0 10px;
+}
+.groww-buddy-groups-blocks--list .groww-buddy-group-block-item .groww-buddy-group-block-item-content {
+  width: 70%;
+  margin: 10px;
+  text-align: left;
+}
+.groww-buddy-groups-blocks--list .groww-buddy-group-block-item .groww-buddy-group-block-item-avatar img {
+  border-radius: 10px;
+  height: 100px;
+  margin: 0 20px;
+}
+.groww-buddy-groups-blocks--list .groww-buddy-group-block-item .groww-buddy-group-block-item-meta {
+  margin-top: 10px;
+}
+.groww-buddy-groups-blocks--list .groww-buddy-group-block-item .groww-buddy-group-block-item-actions {
+  justify-content: flex-end;
+}
+
+.groww-buddy-groups-blocks--grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 10px;
+}
+.groww-buddy-groups-blocks--grid .groww-buddy-group-block-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;
+  border: 1px solid #e8e8e8;
+  padding: 0;
+  position: relative;
+}
+.groww-buddy-groups-blocks--grid .groww-buddy-group-block-item .groww-buddy-group-block-item-title {
+  margin-top: 0;
+}
+.groww-buddy-groups-blocks--grid .groww-buddy-group-block-item .groww-buddy-group-block-item-cover {
+  padding: 0;
+  margin-bottom: 30px;
+}
+.groww-buddy-groups-blocks--grid .groww-buddy-group-block-item .groww-buddy-group-block-item-avatar {
+  left: 10%;
+  position: absolute;
+  top: 20%;
+}
+.groww-buddy-groups-blocks--grid .groww-buddy-group-block-item .groww-buddy-group-block-item-avatar img {
+  border-radius: 10px;
+  height: 50px;
+}
+.groww-buddy-groups-blocks--grid .groww-buddy-group-block-item .groww-buddy-group-block-item-content {
+  width: 100%;
+  margin: 20px;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

@@ -1,0 +1,24 @@
+{
+  "name": "groww-buddy-blocks",
+  "version": "1.0.0",
+  "description": "BuddyBoss Blocks",
+  "main": "build/index.js",
+  "scripts": {
+    "start": "wp-scripts start",
+    "build": "wp-scripts build",
+    "format": "wp-scripts format",
+    "lint:css": "wp-scripts lint-style",
+    "lint:js": "wp-scripts lint-js",
+    "packages-update": "wp-scripts packages-update",
+    "plugin-zip": "wp-scripts plugin-zip"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@wordpress/scripts": "27.9.0"
+  },
+  "dependencies": {
+    "@wordpress/api-fetch": "^6.55.0",
+    "classnames": "^2.5.1"
+  }
+}

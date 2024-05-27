@@ -1,0 +1,68 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "groww-buddy/groups",
+  "version": "1.0.0",
+  "title": "GroupBuddy Groups Blocks",
+  "description": "A block to display BuddyBoss groups.",
+  "category": "growwbuddy",
+  "icon": "groups",
+  "keywords": [
+    "buddyboss",
+    "groww-buddy",
+    "groups"
+  ],
+  "textdomain": "GrowwBuddy",
+  "editorScript": "file:./groups/index.js",
+  "editorStyle": "file:./groups/index.css",
+  "viewScript": "file:./groups/view.js",
+  "style": "file:./groups/style-index.css",
+  "render": "file:./groups/render.php",
+  "example": {},
+  "attributes": {
+    "groupsStyles": {
+      "type": "object",
+      "default": {
+        "groupsLayout": "grid"
+      }
+    },
+    "groupsSettings": {
+      "type": "object",
+      "default": {
+        "search": "",
+        "perPage": 10,
+        "currentPage": 1,
+        "order": "desc",
+        "orderBy": "date_created",
+        "type": ""
+      }
+    }
+  },
+  "supports": {
+    "align": true,
+    "ariaLabel": true,
+    "anchor": true,
+    "html": false,
+    "reusable": false,
+    "spacing": {
+      "padding": true,
+      "margin": true
+    },
+    "dimensions": {
+      "width": true,
+      "height": true
+    },
+    "responsive": true,
+    "typography": {
+      "lineHeight": true
+    },
+    "color": {
+      "gradients": true,
+      "link": true
+    },
+    "background": {
+      "color": true,
+      "gradients": true
+    }
+  }
+}
