@@ -18,9 +18,11 @@
 .groww-buddy-groups-blocks .groww-buddy-group-block-item .groww-buddy-group-block-item-title {
   line-height: 1.5;
   margin-bottom: 0;
+  font-size: 26px;
 }
 .groww-buddy-groups-blocks .groww-buddy-group-block-item .groww-buddy-group-block-item-title a {
   text-decoration: none;
+  color: #0a0a0a;
 }
 .groww-buddy-groups-blocks .groww-buddy-group-block-item .groww-buddy-group-block-item-cover {
   text-align: center;
@@ -52,10 +54,22 @@
 }
 .groww-buddy-groups-blocks .groww-buddy-group-block-item .groww-buddy-group-block-item-actions .groww-buddy-group-block-item-link {
   background: #f9f9f9;
-  padding: 5px 10px;
   border-radius: 5px;
   border: 1px solid #eeeeee;
   text-decoration: none;
+  color: #1e2132;
+  cursor: pointer;
+  font-size: 13px;
+  float: left;
+  letter-spacing: -0.24px;
+  line-height: 28px;
+  margin: 0;
+  min-height: 30px;
+  min-width: initial;
+  padding: 0 12px;
+  text-align: center;
+  text-transform: capitalize;
+  width: auto;
 }
 .groww-buddy-groups-blocks .groww-buddy-group-block-item .groww-buddy-group-block-item-actions .groww-buddy-group-block-item-link:hover {
   background: #eeeeee;
@@ -80,6 +94,7 @@
   border-radius: 10px;
   height: 100px;
   margin: 0 20px;
+  box-shadow: 0 1px 10px #c4c4c4;
 }
 .groww-buddy-groups-blocks--list .groww-buddy-group-block-item .groww-buddy-group-block-item-meta {
   margin-top: 10px;
@@ -102,9 +117,6 @@
   padding: 0;
   position: relative;
 }
-.groww-buddy-groups-blocks--grid .groww-buddy-group-block-item .groww-buddy-group-block-item-title {
-  margin-top: 0;
-}
 .groww-buddy-groups-blocks--grid .groww-buddy-group-block-item .groww-buddy-group-block-item-cover {
   padding: 0;
   margin-bottom: 30px;
@@ -116,7 +128,8 @@
 }
 .groww-buddy-groups-blocks--grid .groww-buddy-group-block-item .groww-buddy-group-block-item-avatar img {
   border-radius: 10px;
-  height: 50px;
+  height: 75px;
+  box-shadow: 0 1px 10px #c4c4c4;
 }
 .groww-buddy-groups-blocks--grid .groww-buddy-group-block-item .groww-buddy-group-block-item-content {
   width: 100%;

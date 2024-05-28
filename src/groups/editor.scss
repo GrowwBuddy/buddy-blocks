@@ -15,9 +15,11 @@
     .groww-buddy-group-block-item-title {
       line-height: 1.5;
       margin-bottom: 0;
+      font-size: 26px;
 
       a {
         text-decoration: none;
+        color: #0a0a0a;
       }
     }
 
@@ -28,6 +30,7 @@
       img {
         width: 100%;
         border-radius: 12px;
+
       }
     }
 
@@ -55,10 +58,22 @@
 
       .groww-buddy-group-block-item-link {
         background: #f9f9f9;
-        padding: 5px 10px;
         border-radius: 5px;
         border: 1px solid #eeeeee;
         text-decoration: none;
+        color: #1e2132;
+        cursor: pointer;
+        font-size: 13px;
+        float: right;
+        letter-spacing: -.24px;
+        line-height: 28px;
+        margin: 0;
+        min-height: 30px;
+        min-width: initial;
+        padding: 0 12px;
+        text-align: center;
+        text-transform: capitalize;
+        width: auto;
 
         &:hover {
           background: #eeeeee;
@@ -92,6 +107,7 @@
         border-radius: 10px;
         height: 100px;
         margin: 0 20px;
+        box-shadow: 0 1px 10px #c4c4c4;
       }
     }
 
@@ -122,6 +138,8 @@
     .groww-buddy-group-block-item-cover {
       padding: 0;
       margin-bottom: 30px;
+      background-color: #647385;
+      border-radius: 10px 10px 0 0;
     }
 
     .groww-buddy-group-block-item-avatar {
@@ -131,7 +149,8 @@
 
       img {
         border-radius: 10px;
-        height: 50px;
+        height: 75px;
+        box-shadow: 0 1px 10px #c4c4c4;
       }
     }
 

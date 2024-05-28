@@ -1,4 +1,4 @@
-import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
+import { useBlockProps, InspectorControls,BlockControls } from '@wordpress/block-editor';
 
 // Import CSS.
 import './editor.scss';
@@ -26,9 +26,9 @@ function Edit( { attributes, setAttributes } ) {
                         <InspectorControls>
                             <BlockSettings/>
                         </InspectorControls>
-                        <InspectorControls group="styles">
+                        <BlockControls>
                             <BlockStyles/>
-                        </InspectorControls>
+                        </BlockControls>
                         <Groups/>
                     </div>
                 </GroupsDetailProvider>

@@ -17,7 +17,6 @@
   "editorStyle": "file:./groups/index.css",
   "viewScript": "file:./groups/view.js",
   "style": "file:./groups/style-index.css",
-  "render": "file:./groups/render.php",
   "example": {},
   "attributes": {
     "groupsStyles": {

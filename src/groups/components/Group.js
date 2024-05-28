@@ -31,6 +31,7 @@ console.log(props.group);
         return metas
     }
 
+
     return (
         <div className="groww-buddy-group-block-item">
             { groupsLayout === 'grid' && (

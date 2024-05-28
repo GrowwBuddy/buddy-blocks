@@ -6,18 +6,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class GroupRest {
+class Groups {
 
 	private static $_instance = null;
 
 	/**
 	 * Get instance.
 	 *
-	 * @return GroupRest
+	 * @return Groups
 	 */
 	public static function get_instance() {
 		if ( is_null( self::$_instance ) ) {
-			self::$_instance = new GroupRest();
+			self::$_instance = new Groups();
 		}
 
 		return self::$_instance;
@@ -49,16 +49,15 @@ class GroupRest {
 	}
 
 	public function groww_buddy_blocks_rest_prepare_value( $response, $request, $group ) {
-		$growwbuddy_data = array();
-
-		$growwbuddy_data['description']    = $group->description;
-		$growwbuddy_data['last_activity']  = bp_core_time_since( $group->last_activity );
-
+		$growwbuddy_data                  = array();
+		$growwbuddy_data['description']   = $group->description;
+		$growwbuddy_data['last_activity'] = bp_core_time_since( $group->last_activity );
 
 		$response->data['growwbuddy_data'] = $growwbuddy_data;
 
 		return $response;
 	}
+
 
 
 }

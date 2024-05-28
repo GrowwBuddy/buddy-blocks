@@ -16,10 +16,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+
+require_once plugin_dir_path( __FILE__ ) . 'constants.php';
+
+register_activation_hook( __FILE__, array( 'GrowwBuddyBlocks', 'activation_hook' ) );
+register_deactivation_hook( __FILE__, array( 'GrowwBuddyBlocks', 'deactivation_hook' ) );
+
+if ( ! defined( 'GROWW_BUDDY_BLOCKS_VERSION' ) ) {
+	return;
+}
+
 if ( ! class_exists( 'BuddyBlocks' ) ) {
 	class GrowwBuddyBlocks {
 
-		private static $_instance = null;
+		private static $instance = null;
+
 
 		/**
 		 * Get instance.
@@ -27,39 +38,43 @@ if ( ! class_exists( 'BuddyBlocks' ) ) {
 		 * @return GrowwBuddyBlocks
 		 */
 		public static function get_instance() {
-			if ( is_null( self::$_instance ) ) {
-				self::$_instance = new GrowwBuddyBlocks();
+			if ( is_null( self::$instance ) ) {
+				self::$instance = new self();
 			}
 
-			return self::$_instance;
+			return self::$instance;
 		}
 
 		/**
 		 * Constructor
 		 */
 		private function __construct() {
-			$this->load_files();
+			$this->includes();
 			$this->load_instance();
-			$this->init();
+			$this->hooks();
 		}
 
 		/**
 		 * Load files.
 		 */
-		private function load_files() {
-			require_once __DIR__ . '/includes/groups/GroupRest.php';
+		private function includes() {
+			require_once GROWW_BUDDY_BLOCKS_DIR . '/includes/groups/Groups.php';
 		}
 
+		/**
+		 * Load instance
+		 */
 		public function load_instance() {
-			GroupRest::get_instance();
+			Groups::get_instance();
 		}
 
 		/**
 		 * Initialize the class
 		 */
-		public function init() {
+		public function hooks() {
 			add_action( 'init', array( $this, 'buddy_blocks_register_block' ) );
 			add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ) );
+			add_action( 'enqueue_block_assets', array( $this, 'enqueue_block_editor_assets' ) );
 
 			if ( version_compare( get_bloginfo( 'version' ), '5.8', '>=' ) ) {
 				add_filter( 'block_categories_all', array( $this, 'buddy_blocks_register_layout_category' ) );
@@ -72,9 +87,15 @@ if ( ! class_exists( 'BuddyBlocks' ) ) {
 		 * Enqueue block editor assets
 		 */
 		public function enqueue_block_editor_assets() {
-
 			wp_localize_script(
 				'groww-buddy-groups-editor-script',
+				'GrowwBuddyData',
+				array(
+					'nonce' => wp_create_nonce( 'wp_rest' ),
+				)
+			);
+			wp_localize_script(
+				'groww-buddy-groups-view-script',
 				'GrowwBuddyData',
 				array(
 					'nonce' => wp_create_nonce( 'wp_rest' ),
@@ -87,7 +108,7 @@ if ( ! class_exists( 'BuddyBlocks' ) ) {
 		 */
 		public function buddy_blocks_register_block() {
 			// Register block
-			register_block_type( __DIR__ . '/build' );
+			register_block_type( GROWW_BUDDY_BLOCKS_DIR . '/build' );
 		}
 
 		/**
@@ -103,6 +124,20 @@ if ( ! class_exists( 'BuddyBlocks' ) ) {
 					),
 				)
 			);
+		}
+
+		/**
+		 * Activation hook
+		 */
+		public static function activation_hook() {
+			// Add activation code here
+		}
+
+		/**
+		 * Deactivation hook
+		 */
+		public static function deactivation_hook() {
+			// Add deactivation code here
 		}
 
 	}

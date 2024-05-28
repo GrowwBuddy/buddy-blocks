@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { PanelBody, PanelRow, ToggleControl } from '@wordpress/components';
+import { PanelBody, PanelRow, ToolbarGroup, ToolbarButton } from '@wordpress/components';
 import { useContext } from '@wordpress/element';
 import { GroupsStylesProvider } from "../Context/groupsStyles.context";
 import { useGroupsStyles } from "../Context/groupsStyles.context";
@@ -16,23 +16,20 @@ const BlockStyles = () => {
 
     return (
         <>
-            <PanelBody
-                title={ __( 'Group Style', 'groww-buddy' ) }
-                initialOpen={ true }
-            >
-                <PanelRow>
-                    <ToggleControl
-                        label={ __( 'Layout', 'groww-buddy' ) }
-                        help={
-                            groupsLayout === 'grid'
-                                ? __( 'Display groups in grid layout.', 'groww-buddy' )
-                                : __( 'Display groups in list layout.', 'groww-buddy' )
-                        }
-                        checked={ groupsLayout === 'grid' }
-                        onChange={ handleGroupsLayoutChange }
-                    />
-                </PanelRow>
-            </PanelBody>
+            <ToolbarGroup>
+                <ToolbarButton
+                    icon="list-view"
+                    label={__('List Layout', 'GrowwBuddy')}
+                    onClick= { () => handleGroupsLayoutChange( false ) }
+                    isPressed={groupsLayout === 'list'}
+                />
+                <ToolbarButton
+                    icon="grid-view"
+                    label={__('Grid Layout', 'GrowwBuddy')}
+                    onClick= { () => handleGroupsLayoutChange( true ) }
+                    isPressed={groupsLayout === 'grid'}
+                />
+            </ToolbarGroup>
 
         </>
     );

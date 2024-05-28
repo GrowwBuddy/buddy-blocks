@@ -416,15 +416,17 @@ const BlockStyles = () => {
       }
     });
   };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Group Style', 'groww-buddy'),
-    initialOpen: true
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Layout', 'groww-buddy'),
-    help: groupsLayout === 'grid' ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Display groups in grid layout.', 'groww-buddy') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Display groups in list layout.', 'groww-buddy'),
-    checked: groupsLayout === 'grid',
-    onChange: handleGroupsLayoutChange
-  }))));
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarGroup, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarButton, {
+    icon: "list-view",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('List Layout', 'GrowwBuddy'),
+    onClick: () => handleGroupsLayoutChange(false),
+    isPressed: groupsLayout === 'list'
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarButton, {
+    icon: "grid-view",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Grid Layout', 'GrowwBuddy'),
+    onClick: () => handleGroupsLayoutChange(true),
+    isPressed: groupsLayout === 'grid'
+  })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BlockStyles);
 
@@ -623,9 +625,7 @@ function Edit({
     attributes: attributes
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_BlockSettings__WEBPACK_IMPORTED_MODULE_4__["default"], null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
-    group: "styles"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_BlockStyles__WEBPACK_IMPORTED_MODULE_8__["default"], null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Groups__WEBPACK_IMPORTED_MODULE_3__["default"], null)))));
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_BlockSettings__WEBPACK_IMPORTED_MODULE_4__["default"], null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.BlockControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_BlockStyles__WEBPACK_IMPORTED_MODULE_8__["default"], null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Groups__WEBPACK_IMPORTED_MODULE_3__["default"], null)))));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
 
@@ -671,17 +671,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 const Save = ({
   attributes
 }) => {
-  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    ...blockProps
-  });
+    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save(),
+    "data-attributes": JSON.stringify(attributes)
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "group-buddy-groups-placeholder"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Loading groups...', 'GrowwBuddy'))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Save);
 
@@ -787,7 +792,7 @@ module.exports = window["wp"]["url"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"groww-buddy/groups","version":"1.0.0","title":"GroupBuddy Groups Blocks","description":"A block to display BuddyBoss groups.","category":"growwbuddy","icon":"groups","keywords":["buddyboss","groww-buddy","groups"],"textdomain":"GrowwBuddy","editorScript":"file:./groups/index.js","editorStyle":"file:./groups/index.css","viewScript":"file:./groups/view.js","style":"file:./groups/style-index.css","render":"file:./groups/render.php","example":{},"attributes":{"groupsStyles":{"type":"object","default":{"groupsLayout":"grid"}},"groupsSettings":{"type":"object","default":{"search":"","perPage":10,"currentPage":1,"order":"desc","orderBy":"date_created","type":""}}},"supports":{"align":true,"ariaLabel":true,"anchor":true,"html":false,"reusable":false,"spacing":{"padding":true,"margin":true},"dimensions":{"width":true,"height":true},"responsive":true,"typography":{"lineHeight":true},"color":{"gradients":true,"link":true},"background":{"color":true,"gradients":true}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"groww-buddy/groups","version":"1.0.0","title":"GroupBuddy Groups Blocks","description":"A block to display BuddyBoss groups.","category":"growwbuddy","icon":"groups","keywords":["buddyboss","groww-buddy","groups"],"textdomain":"GrowwBuddy","editorScript":"file:./groups/index.js","editorStyle":"file:./groups/index.css","viewScript":"file:./groups/view.js","style":"file:./groups/style-index.css","example":{},"attributes":{"groupsStyles":{"type":"object","default":{"groupsLayout":"grid"}},"groupsSettings":{"type":"object","default":{"search":"","perPage":10,"currentPage":1,"order":"desc","orderBy":"date_created","type":""}}},"supports":{"align":true,"ariaLabel":true,"anchor":true,"html":false,"reusable":false,"spacing":{"padding":true,"margin":true},"dimensions":{"width":true,"height":true},"responsive":true,"typography":{"lineHeight":true},"color":{"gradients":true,"link":true},"background":{"color":true,"gradients":true}}}');
 
 /***/ })
 
