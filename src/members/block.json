@@ -1,0 +1,68 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "groww-buddy/members",
+  "version": "1.0.0",
+  "title": "Members",
+  "description": "A block to display BuddyBoss members.",
+  "category": "growwbuddy",
+  "icon": "admin-users",
+  "keywords": [
+    "buddyboss",
+    "groww-buddy",
+    "members"
+  ],
+  "textdomain": "GrowwBuddy",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "viewScript": "file:./view.js",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "example": {},
+  "attributes": {
+    "membersStyles": {
+      "type": "object",
+      "default": {
+        "membersLayout": "list"
+      }
+    },
+    "membersSettings": {
+      "type": "object",
+      "default": {
+        "search": "",
+        "perPage": 10,
+        "currentPage": 1,
+        "order": "desc",
+        "orderBy": "date_registered",
+        "type": ""
+      }
+    }
+  },
+  "supports": {
+    "align": true,
+    "ariaLabel": true,
+    "anchor": true,
+    "html": false,
+    "reusable": false,
+    "spacing": {
+      "padding": true,
+      "margin": true
+    },
+    "dimensions": {
+      "width": true,
+      "height": true
+    },
+    "responsive": true,
+    "typography": {
+      "lineHeight": true
+    },
+    "color": {
+      "gradients": true,
+      "link": true
+    },
+    "background": {
+      "color": true,
+      "gradients": true
+    }
+  }
+}
