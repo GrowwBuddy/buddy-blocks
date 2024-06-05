@@ -3,7 +3,7 @@
   "apiVersion": 3,
   "name": "groww-buddy/groups",
   "version": "1.0.0",
-  "title": "GroupBuddy Groups Blocks",
+  "title": "Groups",
   "description": "A block to display BuddyBoss groups.",
   "category": "growwbuddy",
   "icon": "groups",
@@ -13,11 +13,11 @@
     "groups"
   ],
   "textdomain": "GrowwBuddy",
-  "editorScript": "file:./groups/index.js",
-  "editorStyle": "file:./groups/index.css",
-  "viewScript": "file:./groups/view.js",
-  "style": "file:./groups/style-index.css",
-  "render": "file:./groups/render.php",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "viewScript": "file:./view.js",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
   "example": {},
   "attributes": {
     "groupsStyles": {

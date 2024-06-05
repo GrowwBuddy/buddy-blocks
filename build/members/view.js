@@ -1,8 +1,8 @@
 /******/ (() => { // webpackBootstrap
 var __webpack_exports__ = {};
-/*!****************************!*\
-  !*** ./src/groups/view.js ***!
-  \****************************/
+/*!*****************************!*\
+  !*** ./src/members/view.js ***!
+  \*****************************/
 jQuery(document).ready(function ($) {
   console.log(1111);
 });

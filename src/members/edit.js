@@ -1,15 +1,36 @@
 // Import CSS.
 import './editor.scss';
-import { ServerSideRender } from '@wordpress/components';
 
-function Edit( { attributes, setAttributes } ) {
+import { useBlockProps, InspectorControls, BlockControls } from '@wordpress/block-editor';
+
+import { MembersStylesProvider } from "./Context/membersStyles.context";
+import { MembersSettingsProvider } from "./Context/membersSettings.context";
+
+import BlockStyles from "./components/BlockStyles";
+import BlockSettings from "./components/BlockSettings";
+import RenderMembers from "./components/RenderMembers";
+
+function Edit( props ) {
+    const { attributes, setAttributes } = props;
+    const { membersLayout } = attributes.membersStyles;
+    const blockProps = useBlockProps( {
+        className: 'groww-buddy-members-blocks ' + (membersLayout === 'grid' ? 'groww-buddy-members-blocks--grid' : 'groww-buddy-members-blocks--list')
+    } );
     return (
-        <div className="groww-buddy-members">
-            <ServerSideRender
-                block="groww-buddy/members"
-                attributes={ attributes }
-            />
-        </div>
+            <MembersSettingsProvider initialSettings={ attributes.membersSettings } setAttributes={ setAttributes }>
+                <MembersStylesProvider initialStyles={ attributes.membersStyles } setAttributes={ setAttributes }>
+                    <div { ...blockProps }>
+                        <InspectorControls>
+                            <BlockSettings/>
+                        </InspectorControls>
+                        <BlockControls>
+                            <BlockStyles/>
+                        </BlockControls>
+                        <RenderMembers attributes={ attributes }/>
+                    </div>
+                </MembersStylesProvider>
+            </MembersSettingsProvider>
+
     );
 }
 

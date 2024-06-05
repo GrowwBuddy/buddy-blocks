@@ -26,7 +26,7 @@ if ( ! defined( 'GROWW_BUDDY_BLOCKS_VERSION' ) ) {
 	return;
 }
 
-if ( ! class_exists( 'BuddyBlocks' ) ) {
+if ( ! class_exists( 'GrowwBuddyBlocks' ) ) {
 	class GrowwBuddyBlocks {
 
 		private static $instance = null;
@@ -59,6 +59,7 @@ if ( ! class_exists( 'BuddyBlocks' ) ) {
 		 */
 		private function includes() {
 			require_once GROWW_BUDDY_BLOCKS_DIR . '/includes/groups/Groups.php';
+			require_once GROWW_BUDDY_BLOCKS_DIR . '/includes/utils/Utils.php';
 		}
 
 		/**
@@ -108,7 +109,8 @@ if ( ! class_exists( 'BuddyBlocks' ) ) {
 		 */
 		public function buddy_blocks_register_block() {
 			// Register block
-			register_block_type( GROWW_BUDDY_BLOCKS_DIR . '/build' );
+			register_block_type( GROWW_BUDDY_BLOCKS_DIR . '/build/groups' );
+			register_block_type( GROWW_BUDDY_BLOCKS_DIR . '/build/members' );
 		}
 
 		/**

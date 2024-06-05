@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@wordpress/api-fetch": "^6.55.0",
+    "@wordpress/server-side-render": "^5.0.0",
     "classnames": "^2.5.1"
   }
 }

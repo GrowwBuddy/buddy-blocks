@@ -641,7 +641,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/groups/style.scss");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../block.json */ "./src/block.json");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.json */ "./src/groups/block.json");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/groups/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/groups/save.js");
 
@@ -786,13 +786,13 @@ module.exports = window["wp"]["url"];
 
 /***/ }),
 
-/***/ "./src/block.json":
-/*!************************!*\
-  !*** ./src/block.json ***!
-  \************************/
+/***/ "./src/groups/block.json":
+/*!*******************************!*\
+  !*** ./src/groups/block.json ***!
+  \*******************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"groww-buddy/groups","version":"1.0.0","title":"GroupBuddy Groups Blocks","description":"A block to display BuddyBoss groups.","category":"growwbuddy","icon":"groups","keywords":["buddyboss","groww-buddy","groups"],"textdomain":"GrowwBuddy","editorScript":"file:./groups/index.js","editorStyle":"file:./groups/index.css","viewScript":"file:./groups/view.js","style":"file:./groups/style-index.css","example":{},"attributes":{"groupsStyles":{"type":"object","default":{"groupsLayout":"grid"}},"groupsSettings":{"type":"object","default":{"search":"","perPage":10,"currentPage":1,"order":"desc","orderBy":"date_created","type":""}}},"supports":{"align":true,"ariaLabel":true,"anchor":true,"html":false,"reusable":false,"spacing":{"padding":true,"margin":true},"dimensions":{"width":true,"height":true},"responsive":true,"typography":{"lineHeight":true},"color":{"gradients":true,"link":true},"background":{"color":true,"gradients":true}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"groww-buddy/groups","version":"1.0.0","title":"Groups","description":"A block to display BuddyBoss groups.","category":"growwbuddy","icon":"groups","keywords":["buddyboss","groww-buddy","groups"],"textdomain":"GrowwBuddy","editorScript":"file:./index.js","editorStyle":"file:./index.css","viewScript":"file:./view.js","style":"file:./style-index.css","render":"file:./render.php","example":{},"attributes":{"groupsStyles":{"type":"object","default":{"groupsLayout":"grid"}},"groupsSettings":{"type":"object","default":{"search":"","perPage":10,"currentPage":1,"order":"desc","orderBy":"date_created","type":""}}},"supports":{"align":true,"ariaLabel":true,"anchor":true,"html":false,"reusable":false,"spacing":{"padding":true,"margin":true},"dimensions":{"width":true,"height":true},"responsive":true,"typography":{"lineHeight":true},"color":{"gradients":true,"link":true},"background":{"color":true,"gradients":true}}}');
 
 /***/ })
 
