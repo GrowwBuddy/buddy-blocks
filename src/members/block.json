@@ -23,12 +23,15 @@
     "membersStyles": {
       "type": "object",
       "default": {
-        "membersLayout": "list"
+        "membersLayout": "list",
+        "itemBgColor": "#ffffff",
+        "itemBgHoverColor": "#f9f9f9"
       }
     },
     "membersSettings": {
       "type": "object",
       "default": {
+        "filter": "filter_by",
         "search": "",
         "perPage": 10,
         "type": "newest"

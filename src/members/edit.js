@@ -23,6 +23,9 @@ function Edit( props ) {
                         <InspectorControls>
                             <BlockSettings/>
                         </InspectorControls>
+                        <InspectorControls group="color">
+                            <BlockStyles group="inspectorControls" {...props} />
+                        </InspectorControls>
                         <BlockControls>
                             <BlockStyles/>
                         </BlockControls>

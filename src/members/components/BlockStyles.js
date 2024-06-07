@@ -1,35 +1,88 @@
 import { __ } from '@wordpress/i18n';
-import { PanelBody, PanelRow, ToolbarGroup, ToolbarButton } from '@wordpress/components';
-import { useContext } from '@wordpress/element';
-import { MembersStylesProvider } from "../Context/membersStyles.context";
+import { ToolbarGroup, ToolbarButton } from '@wordpress/components';
 import { useMembersStyles } from "../Context/membersStyles.context";
+import {
+    __experimentalColorGradientSettingsDropdown as ColorGradientSettingsDropdown,
+    __experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients
+} from '@wordpress/block-editor';
+import BackGroundColor from "./BackGroundColor";
 
 
-const BlockStyles = () => {
+const BlockStyles = ( props ) => {
+
+    const { clientId, group } = props;
 
     const { styles, updateStyles } = useMembersStyles();
-    const { membersLayout } = styles;
+    const { membersLayout, itemBgColor, itemBgHoverColor, userLinkColor, userItemBgHoverColor } = styles;
 
-    const handleMembersLayoutChange = ( newLayout ) => {
-        updateStyles( { membersStyles: { membersLayout: newLayout ? 'grid' : 'list' } } );
+    const handleUpdateStyles = ( key, value ) => {
+        updateStyles( { membersStyles: { [key]: value } } );
     }
+
+    const hasItemBGColor = () => !! itemBgColor || !! itemBgHoverColor;
+    const resetBGColor = () => {
+        handleUpdateStyles('itemBgColor', '')
+        handleUpdateStyles('itemBgHoverColor', '')
+    };
+    const colors = []; // Define your colors
+    const gradients = []; // Define your gradients
+    const areCustomSolidsEnabled = true; // Adjust this as needed
+    const areCustomGradientsEnabled = true; // Adjust this as needed
 
     return (
         <>
-            <ToolbarGroup>
-                <ToolbarButton
-                    icon="list-view"
-                    label={__('List Layout', 'GrowwBuddy')}
-                    onClick= { () => handleMembersLayoutChange( false ) }
-                    isPressed={membersLayout === 'list'}
-                />
-                <ToolbarButton
-                    icon="grid-view"
-                    label={__('Grid Layout', 'GrowwBuddy')}
-                    onClick= { () => handleMembersLayoutChange( true ) }
-                    isPressed={membersLayout === 'grid'}
-                />
-            </ToolbarGroup>
+            { group === 'inspectorControls' && (
+                <>
+                    <BackGroundColor
+                        key="itemBGColor"
+                        label={__("Item BG Color")}
+                        hasValue={hasItemBGColor}
+                        resetValue={resetBGColor}
+                        isShownByDefault={true}
+                        indicators={[itemBgColor, itemBgHoverColor]}
+                        tabs={[
+                            {
+                                key: 'itemBGColor',
+                                label: __("Default"),
+                                inheritedValue: itemBgColor,
+                                setValue: (color) => handleUpdateStyles('itemBgColor', color),
+                                userValue: itemBgColor,
+                            },
+                            {
+                                key: 'hover',
+                                label: __("Hover"),
+                                inheritedValue: itemBgHoverColor,
+                                setValue: (color) => handleUpdateStyles('itemBgHoverColor', color),
+                                userValue: itemBgHoverColor,
+                            },
+                        ]}
+                        colorGradientControlSettings={{
+                            colors,
+                            disableCustomColors: !areCustomSolidsEnabled,
+                            gradients,
+                            disableCustomGradients: !areCustomGradientsEnabled,
+                        }}
+                        panelId={clientId}
+                    />
+                </>
+            ) }
+
+            { group !== 'inspectorControls' && (
+                <ToolbarGroup>
+                    <ToolbarButton
+                        icon="list-view"
+                        label={ __( 'List Layout', 'GrowwBuddy' ) }
+                        onClick={ () => handleUpdateStyles( 'membersLayout', 'list' ) }
+                        isPressed={ membersLayout === 'list' }
+                    />
+                    <ToolbarButton
+                        icon="grid-view"
+                        label={ __( 'Grid Layout', 'GrowwBuddy' ) }
+                        onClick={ () => handleUpdateStyles( 'membersLayout', 'grid' ) }
+                        isPressed={ membersLayout === 'grid' }
+                    />
+                </ToolbarGroup>
+            ) }
 
         </>
     );

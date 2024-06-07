@@ -108,6 +108,151 @@ const MembersStylesProvider = ({
 
 /***/ }),
 
+/***/ "./src/members/components/BackGroundColor.js":
+/*!***************************************************!*\
+  !*** ./src/members/components/BackGroundColor.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! clsx */ "./node_modules/clsx/dist/clsx.mjs");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_private_apis__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/private-apis */ "@wordpress/private-apis");
+/* harmony import */ var _wordpress_private_apis__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_private_apis__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+
+const {
+  lock,
+  unlock
+} = (0,_wordpress_private_apis__WEBPACK_IMPORTED_MODULE_5__.__dangerousOptInToUnstableAPIsOnlyForCoreModules)('I know using unstable features means my theme or plugin will inevitably break in the next version of WordPress.', '@wordpress/block-editor');
+const {
+  Tabs
+} = unlock(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.privateApis);
+function ColorPanelTab({
+  isGradient,
+  inheritedValue,
+  userValue,
+  setValue,
+  colorGradientControlSettings
+}) {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.__experimentalColorGradientControl, {
+    ...colorGradientControlSettings,
+    showTitle: false,
+    enableAlpha: true,
+    __experimentalIsRenderedInSidebar: true,
+    colorValue: isGradient ? undefined : inheritedValue,
+    gradientValue: isGradient ? inheritedValue : undefined,
+    onColorChange: isGradient ? undefined : setValue,
+    onGradientChange: isGradient ? setValue : undefined,
+    clearable: inheritedValue === userValue,
+    headingLevel: 3
+  });
+}
+const LabeledColorIndicators = ({
+  indicators,
+  label
+}) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalHStack, {
+  justify: "flex-start"
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalZStack, {
+  isLayered: false,
+  offset: -8
+}, indicators.map((indicator, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Flex, {
+  key: index,
+  expanded: false
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ColorIndicator, {
+  colorValue: indicator
+})))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.FlexItem, {
+  className: "block-editor-panel-color-gradient-settings__color-name",
+  title: label
+}, label));
+const BackGroundColor = ({
+  key,
+  label,
+  hasValue,
+  resetValue,
+  isShownByDefault,
+  indicators,
+  tabs,
+  panelId,
+  colorGradientControlSettings,
+  popoverProps
+}) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalToolsPanelItem, {
+  className: "block-editor-tools-panel-color-gradient-settings__item",
+  hasValue: hasValue,
+  label: label,
+  onDeselect: resetValue,
+  isShownByDefault: isShownByDefault,
+  panelId: panelId
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Dropdown, {
+  popoverProps: popoverProps,
+  className: "block-editor-tools-panel-color-gradient-settings__dropdown",
+  renderToggle: ({
+    onToggle,
+    isOpen
+  }) => {
+    const toggleProps = {
+      onClick: onToggle,
+      className: (0,clsx__WEBPACK_IMPORTED_MODULE_2__.clsx)('block-editor-panel-color-gradient-settings__dropdown', {
+        'is-open': isOpen
+      }),
+      'aria-expanded': isOpen,
+      'aria-label': (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.sprintf)( /* translators: %s is the type of color property, e.g., "background" */
+      (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Color %s styles'), label)
+    };
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Button, {
+      ...toggleProps
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(LabeledColorIndicators, {
+      indicators: indicators,
+      label: label
+    }));
+  },
+  renderContent: () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalDropdownContentWrapper, {
+    paddingSize: "none"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "block-editor-panel-color-gradient-settings__dropdown-content"
+  }, tabs.length === 1 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorPanelTab, {
+    key: tabs[0].key,
+    ...tabs[0],
+    colorGradientControlSettings: colorGradientControlSettings
+  }), tabs.length > 1 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tabs, {
+    defaultTabId: tabs[0].key
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tabs.TabList, null, tabs.map(tab => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tabs.Tab, {
+    key: tab.key,
+    tabId: tab.key
+  }, tab.label))), tabs.map(tab => {
+    const {
+      key: tabKey,
+      ...restTabProps
+    } = tab;
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tabs.TabPanel, {
+      key: tabKey,
+      tabId: tabKey,
+      focusable: false
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(ColorPanelTab, {
+      key: tabKey,
+      ...restTabProps,
+      colorGradientControlSettings: colorGradientControlSettings
+    }));
+  }))))
+}));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BackGroundColor);
+
+/***/ }),
+
 /***/ "./src/members/components/BlockSettings.js":
 /*!*************************************************!*\
   !*** ./src/members/components/BlockSettings.js ***!
@@ -134,20 +279,29 @@ const BlockSettings = () => {
     settings,
     updateSettings
   } = (0,_Context_membersSettings_context__WEBPACK_IMPORTED_MODULE_3__.useMembersSettings)();
+  console.log(settings);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Settings', 'groww-buddy'),
     initialOpen: true
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Search', 'groww-buddy'),
-    value: settings.search,
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RadioControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Select members by', 'groww-buddy'),
+    selected: settings.filter,
+    options: [{
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Filter members', 'groww-buddy'),
+      value: 'filter_by'
+    }, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Specific members', 'groww-buddy'),
+      value: 'specific'
+    }],
+    defaultValue: "filter_by",
     onChange: value => updateSettings({
       membersSettings: {
         ...settings,
-        search: value
+        filter: value
       }
     })
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Type', 'groww-buddy'),
+  })), settings.filter === 'filter_by' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Order by', 'groww-buddy'),
     options: [{
       value: 'active',
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Active', 'groww-buddy')
@@ -175,13 +329,22 @@ const BlockSettings = () => {
       }
     })
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Members per page', 'groww-buddy'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show number of members', 'groww-buddy'),
     type: "number",
     value: settings.perPage,
     onChange: value => updateSettings({
       membersSettings: {
         ...settings,
         perPage: value
+      }
+    })
+  }))), settings.filter === 'specific' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Search', 'groww-buddy'),
+    value: settings.search,
+    onChange: value => updateSettings({
+      membersSettings: {
+        ...settings,
+        search: value
       }
     })
   }))));
@@ -206,39 +369,85 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _Context_membersStyles_context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Context/membersStyles.context */ "./src/members/Context/membersStyles.context.js");
+/* harmony import */ var _Context_membersStyles_context__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Context/membersStyles.context */ "./src/members/Context/membersStyles.context.js");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _BackGroundColor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./BackGroundColor */ "./src/members/components/BackGroundColor.js");
 
 
 
 
 
 
-const BlockStyles = () => {
+const BlockStyles = props => {
+  const {
+    clientId,
+    group
+  } = props;
   const {
     styles,
     updateStyles
-  } = (0,_Context_membersStyles_context__WEBPACK_IMPORTED_MODULE_4__.useMembersStyles)();
+  } = (0,_Context_membersStyles_context__WEBPACK_IMPORTED_MODULE_3__.useMembersStyles)();
   const {
-    membersLayout
+    membersLayout,
+    itemBgColor,
+    itemBgHoverColor,
+    userLinkColor,
+    userItemBgHoverColor
   } = styles;
-  const handleMembersLayoutChange = newLayout => {
+  const handleUpdateStyles = (key, value) => {
     updateStyles({
       membersStyles: {
-        membersLayout: newLayout ? 'grid' : 'list'
+        [key]: value
       }
     });
   };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarGroup, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarButton, {
+  const hasItemBGColor = () => !!itemBgColor || !!itemBgHoverColor;
+  const resetBGColor = () => {
+    handleUpdateStyles('itemBgColor', '');
+    handleUpdateStyles('itemBgHoverColor', '');
+  };
+  const colors = []; // Define your colors
+  const gradients = []; // Define your gradients
+  const areCustomSolidsEnabled = true; // Adjust this as needed
+  const areCustomGradientsEnabled = true; // Adjust this as needed
+
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, group === 'inspectorControls' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_BackGroundColor__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    key: "itemBGColor",
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Item BG Color"),
+    hasValue: hasItemBGColor,
+    resetValue: resetBGColor,
+    isShownByDefault: true,
+    indicators: [itemBgColor, itemBgHoverColor],
+    tabs: [{
+      key: 'itemBGColor',
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Default"),
+      inheritedValue: itemBgColor,
+      setValue: color => handleUpdateStyles('itemBgColor', color),
+      userValue: itemBgColor
+    }, {
+      key: 'hover',
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Hover"),
+      inheritedValue: itemBgHoverColor,
+      setValue: color => handleUpdateStyles('itemBgHoverColor', color),
+      userValue: itemBgHoverColor
+    }],
+    colorGradientControlSettings: {
+      colors,
+      disableCustomColors: !areCustomSolidsEnabled,
+      gradients,
+      disableCustomGradients: !areCustomGradientsEnabled
+    },
+    panelId: clientId
+  })), group !== 'inspectorControls' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarGroup, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarButton, {
     icon: "list-view",
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('List Layout', 'GrowwBuddy'),
-    onClick: () => handleMembersLayoutChange(false),
+    onClick: () => handleUpdateStyles('membersLayout', 'list'),
     isPressed: membersLayout === 'list'
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarButton, {
     icon: "grid-view",
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Grid Layout', 'GrowwBuddy'),
-    onClick: () => handleMembersLayoutChange(true),
+    onClick: () => handleUpdateStyles('membersLayout', 'grid'),
     isPressed: membersLayout === 'grid'
   })));
 };
@@ -262,23 +471,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/server-side-render */ "@wordpress/server-side-render");
 /* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
 
 const RenderMembers = ({
   attributes
-}) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)((_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_2___default()), {
-  block: "groww-buddy/members",
-  attributes: attributes,
-  EmptyResponsePlaceholder: () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Placeholder, null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('No members found.', 'groww-buddy')),
-  ErrorResponsePlaceholder: ({
-    error
-  }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Placeholder, null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('An error occurred while loading the members.', 'groww-buddy'), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, error.message)),
-  LoadingResponsePlaceholder: () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Placeholder, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Spinner, null), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Loading members...', 'groww-buddy'))
-});
+}) => {
+  const memoizedAttributes = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useMemo)(() => attributes, [attributes]);
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
+    console.log('RenderMembers re-rendered');
+  });
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)((_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_2___default()), {
+    block: "groww-buddy/members",
+    attributes: memoizedAttributes,
+    EmptyResponsePlaceholder: () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Placeholder, null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('No members found.', 'groww-buddy')),
+    ErrorResponsePlaceholder: ({
+      error
+    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Placeholder, null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('An error occurred while loading the members.', 'groww-buddy'), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, error.message)),
+    LoadingResponsePlaceholder: () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Placeholder, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Spinner, null), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Loading members...', 'groww-buddy'))
+  });
+};
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RenderMembers);
 
 /***/ }),
@@ -331,7 +549,12 @@ function Edit(props) {
     setAttributes: setAttributes
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_BlockSettings__WEBPACK_IMPORTED_MODULE_6__["default"], null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_BlockStyles__WEBPACK_IMPORTED_MODULE_5__["default"], null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RenderMembers__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_BlockSettings__WEBPACK_IMPORTED_MODULE_6__["default"], null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
+    group: "color"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_BlockStyles__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    group: "inspectorControls",
+    ...props
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_BlockStyles__WEBPACK_IMPORTED_MODULE_5__["default"], null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RenderMembers__WEBPACK_IMPORTED_MODULE_7__["default"], {
     attributes: attributes
   }))));
 }
@@ -451,6 +674,16 @@ module.exports = window["wp"]["i18n"];
 
 /***/ }),
 
+/***/ "@wordpress/private-apis":
+/*!*************************************!*\
+  !*** external ["wp","privateApis"] ***!
+  \*************************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["privateApis"];
+
+/***/ }),
+
 /***/ "@wordpress/server-side-render":
 /*!******************************************!*\
   !*** external ["wp","serverSideRender"] ***!
@@ -461,13 +694,28 @@ module.exports = window["wp"]["serverSideRender"];
 
 /***/ }),
 
+/***/ "./node_modules/clsx/dist/clsx.mjs":
+/*!*****************************************!*\
+  !*** ./node_modules/clsx/dist/clsx.mjs ***!
+  \*****************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   clsx: () => (/* binding */ clsx),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function r(e){var t,f,n="";if("string"==typeof e||"number"==typeof e)n+=e;else if("object"==typeof e)if(Array.isArray(e)){var o=e.length;for(t=0;t<o;t++)e[t]&&(f=r(e[t]))&&(n&&(n+=" "),n+=f)}else for(f in e)e[f]&&(n&&(n+=" "),n+=f);return n}function clsx(){for(var e,t,f=0,n="",o=arguments.length;f<o;f++)(e=arguments[f])&&(t=r(e))&&(n&&(n+=" "),n+=t);return n}/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (clsx);
+
+/***/ }),
+
 /***/ "./src/members/block.json":
 /*!********************************!*\
   !*** ./src/members/block.json ***!
   \********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"groww-buddy/members","version":"1.0.0","title":"Members","description":"A block to display BuddyBoss members.","category":"growwbuddy","icon":"admin-users","keywords":["buddyboss","groww-buddy","members"],"textdomain":"GrowwBuddy","editorScript":"file:./index.js","editorStyle":"file:./index.css","viewScript":"file:./view.js","style":"file:./style-index.css","render":"file:./render.php","example":{},"attributes":{"membersStyles":{"type":"object","default":{"membersLayout":"list"}},"membersSettings":{"type":"object","default":{"search":"","perPage":10,"type":"newest"}}},"supports":{"align":true,"ariaLabel":true,"anchor":true,"html":false,"reusable":false,"spacing":{"padding":true,"margin":true},"dimensions":{"width":true,"height":true},"responsive":true,"typography":{"lineHeight":true},"color":{"gradients":true,"link":true},"background":{"color":true,"gradients":true}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"groww-buddy/members","version":"1.0.0","title":"Members","description":"A block to display BuddyBoss members.","category":"growwbuddy","icon":"admin-users","keywords":["buddyboss","groww-buddy","members"],"textdomain":"GrowwBuddy","editorScript":"file:./index.js","editorStyle":"file:./index.css","viewScript":"file:./view.js","style":"file:./style-index.css","render":"file:./render.php","example":{},"attributes":{"membersStyles":{"type":"object","default":{"membersLayout":"list","itemBgColor":"#ffffff","itemBgHoverColor":"#f9f9f9"}},"membersSettings":{"type":"object","default":{"filter":"filter_by","search":"","perPage":10,"type":"newest"}}},"supports":{"align":true,"ariaLabel":true,"anchor":true,"html":false,"reusable":false,"spacing":{"padding":true,"margin":true},"dimensions":{"width":true,"height":true},"responsive":true,"typography":{"lineHeight":true},"color":{"gradients":true,"link":true},"background":{"color":true,"gradients":true}}}');
 
 /***/ })
 

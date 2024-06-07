@@ -212,12 +212,11 @@
 .gridlist.listview .item .item-container {
   flex-direction: row;
   align-items: center;
-  padding: 0 1.75rem;
 }
 .gridlist.listview .item .item-container .item-cover {
   height: 100%;
   max-width: 120px;
-  margin-left: 1.75rem;
+  margin: 0 1.75rem;
 }
 
 @media screen and (min-width: 992px) {

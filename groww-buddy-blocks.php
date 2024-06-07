@@ -19,8 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once plugin_dir_path( __FILE__ ) . 'constants.php';
 
-register_activation_hook( __FILE__, array( 'GrowwBuddyBlocks', 'activation_hook' ) );
-register_deactivation_hook( __FILE__, array( 'GrowwBuddyBlocks', 'deactivation_hook' ) );
+
 
 if ( ! defined( 'GROWW_BUDDY_BLOCKS_VERSION' ) ) {
 	return;
@@ -49,15 +48,20 @@ if ( ! class_exists( 'GrowwBuddyBlocks' ) ) {
 		 * Constructor
 		 */
 		private function __construct() {
+			register_activation_hook( __FILE__, array( $this, 'activation_hook' ) );
+			register_deactivation_hook( __FILE__, array( $this, 'deactivation_hook' ) );
+
 			$this->includes();
 			$this->load_instance();
 			$this->hooks();
+
 		}
 
 		/**
 		 * Load files.
 		 */
 		private function includes() {
+			require_once GROWW_BUDDY_BLOCKS_DIR . '/includes/functions.php';
 			require_once GROWW_BUDDY_BLOCKS_DIR . '/includes/groups/Groups.php';
 			require_once GROWW_BUDDY_BLOCKS_DIR . '/includes/utils/Utils.php';
 		}
