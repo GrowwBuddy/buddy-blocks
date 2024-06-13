@@ -2,17 +2,85 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/members/Context/membersSettings.context.js":
-/*!********************************************************!*\
-  !*** ./src/members/Context/membersSettings.context.js ***!
-  \********************************************************/
+/***/ "./src/commonComponents/CommonProviders.js":
+/*!*************************************************!*\
+  !*** ./src/commonComponents/CommonProviders.js ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   GroupsSettingsProvider: () => (/* binding */ GroupsSettingsProvider),
+/* harmony export */   GroupsStylesProvider: () => (/* binding */ GroupsStylesProvider),
 /* harmony export */   MembersSettingsProvider: () => (/* binding */ MembersSettingsProvider),
-/* harmony export */   getMembersSettings: () => (/* binding */ getMembersSettings),
-/* harmony export */   useMembersSettings: () => (/* binding */ useMembersSettings)
+/* harmony export */   MembersStylesProvider: () => (/* binding */ MembersStylesProvider)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Providers_StylesProvider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Providers/StylesProvider */ "./src/commonComponents/Providers/StylesProvider.js");
+/* harmony import */ var _Providers_GenericProvider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Providers/GenericProvider */ "./src/commonComponents/Providers/GenericProvider.js");
+
+
+
+
+/** Members Block Providers */
+const MembersStylesProvider = ({
+  children,
+  initialStyles,
+  setAttributes
+}) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Providers_StylesProvider__WEBPACK_IMPORTED_MODULE_1__.StylesProvider, {
+  children: children,
+  initialStyles: initialStyles,
+  setAttributes: setAttributes,
+  blockKey: "membersStyles"
+});
+const MembersSettingsProvider = ({
+  children,
+  initialSettings,
+  setAttributes
+}) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Providers_GenericProvider__WEBPACK_IMPORTED_MODULE_2__.GenericProvider, {
+  initialData: initialSettings,
+  setAttributes: setAttributes,
+  dataKey: "membersSettings"
+}, children);
+
+/** End Members Block Providers */
+
+/** Groups Block Providers */
+const GroupsStylesProvider = ({
+  children,
+  initialStyles,
+  setAttributes
+}) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Providers_StylesProvider__WEBPACK_IMPORTED_MODULE_1__.StylesProvider, {
+  children: children,
+  initialStyles: initialStyles,
+  setAttributes: setAttributes,
+  blockKey: "groupsStyles"
+});
+const GroupsSettingsProvider = ({
+  children,
+  initialSettings,
+  setAttributes
+}) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Providers_GenericProvider__WEBPACK_IMPORTED_MODULE_2__.GenericProvider, {
+  initialData: initialSettings,
+  setAttributes: setAttributes,
+  dataKey: "groupsSettings"
+}, children);
+
+/** End Groups Block Providers */
+
+/***/ }),
+
+/***/ "./src/commonComponents/Providers/GenericProvider.js":
+/*!***********************************************************!*\
+  !*** ./src/commonComponents/Providers/GenericProvider.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   GenericProvider: () => (/* binding */ GenericProvider),
+/* harmony export */   useGenericContext: () => (/* binding */ useGenericContext)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -20,52 +88,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
 
 
-const MembersSettingsContext = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createContext)();
-const useMembersSettings = () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useContext)(MembersSettingsContext);
-const getMembersSettings = () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useContext)(MembersSettingsContext).getSettings();
-const MembersSettingsProvider = ({
+const GenericContext = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createContext)();
+const useGenericContext = () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useContext)(GenericContext);
+const GenericProvider = ({
   children,
-  initialSettings,
-  setAttributes
+  initialData,
+  setAttributes,
+  dataKey
 }) => {
-  const [settings, setSettings] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(initialSettings);
-  const updateSettings = newSettings => {
-    setSettings(prevSettings => ({
-      ...prevSettings,
-      ...newSettings.membersSettings
+  const [data, setData] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(initialData);
+  const updateData = newData => {
+    setData(prevData => ({
+      ...prevData,
+      ...newData[dataKey]
     }));
     setAttributes({
-      membersSettings: {
-        ...settings,
-        ...newSettings.membersSettings
+      [dataKey]: {
+        ...data,
+        ...newData[dataKey]
       }
     });
   };
-  const getSettings = () => {
-    return settings;
+  const getData = () => {
+    return data;
   };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(MembersSettingsContext.Provider, {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(GenericContext.Provider, {
     value: {
-      settings,
-      updateSettings,
-      getSettings
+      data,
+      updateData,
+      getData
     }
   }, children);
 };
 
 /***/ }),
 
-/***/ "./src/members/Context/membersStyles.context.js":
-/*!******************************************************!*\
-  !*** ./src/members/Context/membersStyles.context.js ***!
-  \******************************************************/
+/***/ "./src/commonComponents/Providers/StylesProvider.js":
+/*!**********************************************************!*\
+  !*** ./src/commonComponents/Providers/StylesProvider.js ***!
+  \**********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   MembersStylesProvider: () => (/* binding */ MembersStylesProvider),
-/* harmony export */   getMembersStyles: () => (/* binding */ getMembersStyles),
-/* harmony export */   useMembersStyles: () => (/* binding */ useMembersStyles)
+/* harmony export */   StylesProvider: () => (/* binding */ StylesProvider),
+/* harmony export */   getStyles: () => (/* binding */ getStyles),
+/* harmony export */   useStyles: () => (/* binding */ useStyles)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -73,31 +141,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
 
 
-const MembersStylesContext = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createContext)();
-const useMembersStyles = () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useContext)(MembersStylesContext);
-const getMembersStyles = () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useContext)(MembersStylesContext).getStyles();
-const MembersStylesProvider = ({
+const StylesContext = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createContext)();
+const useStyles = () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useContext)(StylesContext);
+const getStyles = () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useContext)(StylesContext).getStyles();
+const StylesProvider = ({
   children,
   initialStyles,
-  setAttributes
+  setAttributes,
+  blockKey
 }) => {
   const [styles, setStyles] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(initialStyles);
   const updateStyles = newStyles => {
     setStyles(prevStyles => ({
       ...prevStyles,
-      ...newStyles.membersStyles
+      ...newStyles[blockKey]
     }));
     setAttributes({
-      membersStyles: {
+      [blockKey]: {
         ...styles,
-        ...newStyles.membersStyles
+        ...newStyles[blockKey]
       }
     });
   };
   const getStyles = () => {
     return styles;
   };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(MembersStylesContext.Provider, {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(StylesContext.Provider, {
     value: {
       styles,
       updateStyles,
@@ -127,21 +196,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _wordpress_private_apis__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/private-apis */ "@wordpress/private-apis");
-/* harmony import */ var _wordpress_private_apis__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_private_apis__WEBPACK_IMPORTED_MODULE_5__);
 
 
 
 
 
-
-const {
-  lock,
-  unlock
-} = (0,_wordpress_private_apis__WEBPACK_IMPORTED_MODULE_5__.__dangerousOptInToUnstableAPIsOnlyForCoreModules)('I know using unstable features means my theme or plugin will inevitably break in the next version of WordPress.', '@wordpress/block-editor');
-const {
-  Tabs
-} = unlock(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.privateApis);
 function ColorPanelTab({
   isGradient,
   inheritedValue,
@@ -228,9 +287,7 @@ const BackGroundColor = ({
     key: tabs[0].key,
     ...tabs[0],
     colorGradientControlSettings: colorGradientControlSettings
-  }), tabs.length > 1 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tabs, {
-    defaultTabId: tabs[0].key
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tabs.TabList, null, tabs.map(tab => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tabs.Tab, {
+  }), tabs.length > 1 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Tabs, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TabList, null, tabs.map(tab => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tab, {
     key: tab.key,
     tabId: tab.key
   }, tab.label))), tabs.map(tab => {
@@ -238,7 +295,7 @@ const BackGroundColor = ({
       key: tabKey,
       ...restTabProps
     } = tab;
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tabs.TabPanel, {
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TabPanel, {
       key: tabKey,
       tabId: tabKey,
       focusable: false
@@ -269,17 +326,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _Context_membersSettings_context__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Context/membersSettings.context */ "./src/members/Context/membersSettings.context.js");
+/* harmony import */ var _commonComponents_Providers_GenericProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../commonComponents/Providers/GenericProvider */ "./src/commonComponents/Providers/GenericProvider.js");
 
 
 
 
 const BlockSettings = () => {
   const {
-    settings,
-    updateSettings
-  } = (0,_Context_membersSettings_context__WEBPACK_IMPORTED_MODULE_3__.useMembersSettings)();
-  console.log(settings);
+    data: settings,
+    updateData: updateSettings,
+    getData: getSettings
+  } = (0,_commonComponents_Providers_GenericProvider__WEBPACK_IMPORTED_MODULE_3__.useGenericContext)();
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Settings', 'groww-buddy'),
     initialOpen: true
@@ -369,11 +426,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _Context_membersStyles_context__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Context/membersStyles.context */ "./src/members/Context/membersStyles.context.js");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _BackGroundColor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./BackGroundColor */ "./src/members/components/BackGroundColor.js");
-
+/* harmony import */ var _commonComponents_Providers_StylesProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../commonComponents/Providers/StylesProvider */ "./src/commonComponents/Providers/StylesProvider.js");
+/* harmony import */ var _BackGroundColor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./BackGroundColor */ "./src/members/components/BackGroundColor.js");
 
 
 
@@ -387,13 +441,11 @@ const BlockStyles = props => {
   const {
     styles,
     updateStyles
-  } = (0,_Context_membersStyles_context__WEBPACK_IMPORTED_MODULE_3__.useMembersStyles)();
+  } = (0,_commonComponents_Providers_StylesProvider__WEBPACK_IMPORTED_MODULE_3__.useStyles)();
   const {
     membersLayout,
     itemBgColor,
-    itemBgHoverColor,
-    userLinkColor,
-    userItemBgHoverColor
+    itemBgHoverColor
   } = styles;
   const handleUpdateStyles = (key, value) => {
     updateStyles({
@@ -412,41 +464,14 @@ const BlockStyles = props => {
   const areCustomSolidsEnabled = true; // Adjust this as needed
   const areCustomGradientsEnabled = true; // Adjust this as needed
 
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, group === 'inspectorControls' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_BackGroundColor__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    key: "itemBGColor",
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Item BG Color"),
-    hasValue: hasItemBGColor,
-    resetValue: resetBGColor,
-    isShownByDefault: true,
-    indicators: [itemBgColor, itemBgHoverColor],
-    tabs: [{
-      key: 'itemBGColor',
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Default"),
-      inheritedValue: itemBgColor,
-      setValue: color => handleUpdateStyles('itemBgColor', color),
-      userValue: itemBgColor
-    }, {
-      key: 'hover',
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Hover"),
-      inheritedValue: itemBgHoverColor,
-      setValue: color => handleUpdateStyles('itemBgHoverColor', color),
-      userValue: itemBgHoverColor
-    }],
-    colorGradientControlSettings: {
-      colors,
-      disableCustomColors: !areCustomSolidsEnabled,
-      gradients,
-      disableCustomGradients: !areCustomGradientsEnabled
-    },
-    panelId: clientId
-  })), group !== 'inspectorControls' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarGroup, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarButton, {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, group === 'inspectorControls' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null), group !== 'inspectorControls' && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarGroup, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarButton, {
     icon: "list-view",
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('List Layout', 'GrowwBuddy'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('List Layout', 'groww-buddy'),
     onClick: () => handleUpdateStyles('membersLayout', 'list'),
     isPressed: membersLayout === 'list'
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarButton, {
     icon: "grid-view",
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Grid Layout', 'GrowwBuddy'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Grid Layout', 'groww-buddy'),
     onClick: () => handleUpdateStyles('membersLayout', 'grid'),
     isPressed: membersLayout === 'grid'
   })));
@@ -516,11 +541,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./editor.scss */ "./src/members/editor.scss");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _Context_membersStyles_context__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Context/membersStyles.context */ "./src/members/Context/membersStyles.context.js");
-/* harmony import */ var _Context_membersSettings_context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Context/membersSettings.context */ "./src/members/Context/membersSettings.context.js");
-/* harmony import */ var _components_BlockStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/BlockStyles */ "./src/members/components/BlockStyles.js");
-/* harmony import */ var _components_BlockSettings__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/BlockSettings */ "./src/members/components/BlockSettings.js");
-/* harmony import */ var _components_RenderMembers__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/RenderMembers */ "./src/members/components/RenderMembers.js");
+/* harmony import */ var _commonComponents_CommonProviders__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../commonComponents/CommonProviders */ "./src/commonComponents/CommonProviders.js");
+/* harmony import */ var _components_BlockStyles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/BlockStyles */ "./src/members/components/BlockStyles.js");
+/* harmony import */ var _components_BlockSettings__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/BlockSettings */ "./src/members/components/BlockSettings.js");
+/* harmony import */ var _components_RenderMembers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/RenderMembers */ "./src/members/components/RenderMembers.js");
 
 // Import CSS.
 
@@ -535,26 +559,27 @@ function Edit(props) {
     attributes,
     setAttributes
   } = props;
+  console.log(attributes);
   const {
     membersLayout
   } = attributes.membersStyles;
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
     className: 'groww-buddy-members-blocks ' + (membersLayout === 'grid' ? 'groww-buddy-members-blocks--grid' : 'groww-buddy-members-blocks--list')
   });
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Context_membersSettings_context__WEBPACK_IMPORTED_MODULE_4__.MembersSettingsProvider, {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_commonComponents_CommonProviders__WEBPACK_IMPORTED_MODULE_3__.MembersSettingsProvider, {
     initialSettings: attributes.membersSettings,
     setAttributes: setAttributes
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Context_membersStyles_context__WEBPACK_IMPORTED_MODULE_3__.MembersStylesProvider, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_commonComponents_CommonProviders__WEBPACK_IMPORTED_MODULE_3__.MembersStylesProvider, {
     initialStyles: attributes.membersStyles,
     setAttributes: setAttributes
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_BlockSettings__WEBPACK_IMPORTED_MODULE_6__["default"], null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_BlockSettings__WEBPACK_IMPORTED_MODULE_5__["default"], null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
     group: "color"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_BlockStyles__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_BlockStyles__WEBPACK_IMPORTED_MODULE_4__["default"], {
     group: "inspectorControls",
     ...props
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_BlockStyles__WEBPACK_IMPORTED_MODULE_5__["default"], null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RenderMembers__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_BlockStyles__WEBPACK_IMPORTED_MODULE_4__["default"], null)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_RenderMembers__WEBPACK_IMPORTED_MODULE_6__["default"], {
     attributes: attributes
   }))));
 }
@@ -674,16 +699,6 @@ module.exports = window["wp"]["i18n"];
 
 /***/ }),
 
-/***/ "@wordpress/private-apis":
-/*!*************************************!*\
-  !*** external ["wp","privateApis"] ***!
-  \*************************************/
-/***/ ((module) => {
-
-module.exports = window["wp"]["privateApis"];
-
-/***/ }),
-
 /***/ "@wordpress/server-side-render":
 /*!******************************************!*\
   !*** external ["wp","serverSideRender"] ***!
@@ -715,7 +730,7 @@ function r(e){var t,f,n="";if("string"==typeof e||"number"==typeof e)n+=e;else i
   \********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"groww-buddy/members","version":"1.0.0","title":"Members","description":"A block to display BuddyBoss members.","category":"growwbuddy","icon":"admin-users","keywords":["buddyboss","groww-buddy","members"],"textdomain":"GrowwBuddy","editorScript":"file:./index.js","editorStyle":"file:./index.css","viewScript":"file:./view.js","style":"file:./style-index.css","render":"file:./render.php","example":{},"attributes":{"membersStyles":{"type":"object","default":{"membersLayout":"list","itemBgColor":"#ffffff","itemBgHoverColor":"#f9f9f9"}},"membersSettings":{"type":"object","default":{"filter":"filter_by","search":"","perPage":10,"type":"newest"}}},"supports":{"align":true,"ariaLabel":true,"anchor":true,"html":false,"reusable":false,"spacing":{"padding":true,"margin":true},"dimensions":{"width":true,"height":true},"responsive":true,"typography":{"lineHeight":true},"color":{"gradients":true,"link":true},"background":{"color":true,"gradients":true}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"groww-buddy/members","version":"1.0.0","title":"Members","description":"A block to display BuddyBoss members.","category":"growwbuddy","icon":"admin-users","keywords":["buddyboss","groww-buddy","members"],"textdomain":"groww-buddy","editorScript":"file:./index.js","editorStyle":"file:./index.css","viewScript":"file:./view.js","style":"file:./style-index.css","render":"file:./render.php","example":{},"attributes":{"membersStyles":{"type":"object","default":{"membersLayout":"list","itemBgColor":"#ffffff","itemBgHoverColor":"#f9f9f9"}},"membersSettings":{"type":"object","default":{"filter":"filter_by","search":"","perPage":10,"type":"newest"}}},"supports":{"align":true,"ariaLabel":true,"anchor":true,"html":false,"reusable":false,"spacing":{"padding":true,"margin":true},"dimensions":{"width":true,"height":true},"responsive":true,"typography":{"lineHeight":true},"color":{"gradients":true,"link":true},"background":{"color":true,"gradients":true}}}');
 
 /***/ })
 

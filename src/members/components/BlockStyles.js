@@ -1,19 +1,14 @@
 import { __ } from '@wordpress/i18n';
 import { ToolbarGroup, ToolbarButton } from '@wordpress/components';
-import { useMembersStyles } from "../Context/membersStyles.context";
-import {
-    __experimentalColorGradientSettingsDropdown as ColorGradientSettingsDropdown,
-    __experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients
-} from '@wordpress/block-editor';
+import { useStyles } from '../../commonComponents/Providers/StylesProvider';
 import BackGroundColor from "./BackGroundColor";
-
 
 const BlockStyles = ( props ) => {
 
     const { clientId, group } = props;
 
-    const { styles, updateStyles } = useMembersStyles();
-    const { membersLayout, itemBgColor, itemBgHoverColor, userLinkColor, userItemBgHoverColor } = styles;
+    const { styles, updateStyles } = useStyles();
+    const { membersLayout, itemBgColor, itemBgHoverColor } = styles;
 
     const handleUpdateStyles = ( key, value ) => {
         updateStyles( { membersStyles: { [key]: value } } );
@@ -33,37 +28,37 @@ const BlockStyles = ( props ) => {
         <>
             { group === 'inspectorControls' && (
                 <>
-                    <BackGroundColor
-                        key="itemBGColor"
-                        label={__("Item BG Color")}
-                        hasValue={hasItemBGColor}
-                        resetValue={resetBGColor}
-                        isShownByDefault={true}
-                        indicators={[itemBgColor, itemBgHoverColor]}
-                        tabs={[
-                            {
-                                key: 'itemBGColor',
-                                label: __("Default"),
-                                inheritedValue: itemBgColor,
-                                setValue: (color) => handleUpdateStyles('itemBgColor', color),
-                                userValue: itemBgColor,
-                            },
-                            {
-                                key: 'hover',
-                                label: __("Hover"),
-                                inheritedValue: itemBgHoverColor,
-                                setValue: (color) => handleUpdateStyles('itemBgHoverColor', color),
-                                userValue: itemBgHoverColor,
-                            },
-                        ]}
-                        colorGradientControlSettings={{
-                            colors,
-                            disableCustomColors: !areCustomSolidsEnabled,
-                            gradients,
-                            disableCustomGradients: !areCustomGradientsEnabled,
-                        }}
-                        panelId={clientId}
-                    />
+                    {/*<BackGroundColor*/}
+                    {/*    key="itemBGColor"*/}
+                    {/*    label={__("Item BG Color")}*/}
+                    {/*    hasValue={hasItemBGColor}*/}
+                    {/*    resetValue={resetBGColor}*/}
+                    {/*    isShownByDefault={true}*/}
+                    {/*    indicators={[itemBgColor, itemBgHoverColor]}*/}
+                    {/*    tabs={[*/}
+                    {/*        {*/}
+                    {/*            key: 'itemBGColor',*/}
+                    {/*            label: __("Default"),*/}
+                    {/*            inheritedValue: itemBgColor,*/}
+                    {/*            setValue: (color) => handleUpdateStyles('itemBgColor', color),*/}
+                    {/*            userValue: itemBgColor,*/}
+                    {/*        },*/}
+                    {/*        {*/}
+                    {/*            key: 'hover',*/}
+                    {/*            label: __("Hover"),*/}
+                    {/*            inheritedValue: itemBgHoverColor,*/}
+                    {/*            setValue: (color) => handleUpdateStyles('itemBgHoverColor', color),*/}
+                    {/*            userValue: itemBgHoverColor,*/}
+                    {/*        },*/}
+                    {/*    ]}*/}
+                    {/*    colorGradientControlSettings={{*/}
+                    {/*        colors,*/}
+                    {/*        disableCustomColors: !areCustomSolidsEnabled,*/}
+                    {/*        gradients,*/}
+                    {/*        disableCustomGradients: !areCustomGradientsEnabled,*/}
+                    {/*    }}*/}
+                    {/*    panelId={clientId}*/}
+                    {/*/>*/}
                 </>
             ) }
 
@@ -71,13 +66,13 @@ const BlockStyles = ( props ) => {
                 <ToolbarGroup>
                     <ToolbarButton
                         icon="list-view"
-                        label={ __( 'List Layout', 'GrowwBuddy' ) }
+                        label={ __( 'List Layout', 'groww-buddy' ) }
                         onClick={ () => handleUpdateStyles( 'membersLayout', 'list' ) }
                         isPressed={ membersLayout === 'list' }
                     />
                     <ToolbarButton
                         icon="grid-view"
-                        label={ __( 'Grid Layout', 'GrowwBuddy' ) }
+                        label={ __( 'Grid Layout', 'groww-buddy' ) }
                         onClick={ () => handleUpdateStyles( 'membersLayout', 'grid' ) }
                         isPressed={ membersLayout === 'grid' }
                     />

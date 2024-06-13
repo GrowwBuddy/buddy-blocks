@@ -1,10 +1,9 @@
 import { __ } from '@wordpress/i18n';
 import { PanelBody, PanelRow, RadioControl, TextControl, SelectControl } from '@wordpress/components';
-import { useMembersSettings } from "../Context/membersSettings.context";
+import { useGenericContext } from "../../commonComponents/Providers/GenericProvider";
 
 const BlockSettings = () => {
-    const { settings, updateSettings } = useMembersSettings();
-console.log(settings);
+    const { data: settings, updateData: updateSettings, getData: getSettings } = useGenericContext();
 
     return (
         <>

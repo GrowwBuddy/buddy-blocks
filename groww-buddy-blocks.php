@@ -115,6 +115,7 @@ if ( ! class_exists( 'GrowwBuddyBlocks' ) ) {
 			// Register block
 			register_block_type( GROWW_BUDDY_BLOCKS_DIR . '/build/groups' );
 			register_block_type( GROWW_BUDDY_BLOCKS_DIR . '/build/members' );
+			register_block_type( GROWW_BUDDY_BLOCKS_DIR . '/build/posts' );
 		}
 
 		/**
@@ -126,7 +127,7 @@ if ( ! class_exists( 'GrowwBuddyBlocks' ) ) {
 				array(
 					array(
 						'slug' => 'growwbuddy',
-						'title' => __( 'GrowwBuddy', 'GrowwBuddy' ),
+						'title' => __( 'GrowwBuddy', 'groww-buddy' ),
 					),
 				)
 			);

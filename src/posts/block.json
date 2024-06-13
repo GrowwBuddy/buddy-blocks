@@ -1,16 +1,17 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "groww-buddy/members",
+  "name": "groww-buddy/blog-posts",
   "version": "1.0.0",
-  "title": "Members",
-  "description": "A block to display BuddyBoss members.",
+  "title": "Blog Posts",
+  "description": "Display a list of blog posts.",
   "category": "growwbuddy",
   "icon": "admin-users",
   "keywords": [
-    "buddyboss",
+    "posts",
     "groww-buddy",
-    "members"
+    "blog-posts",
+    "groww-buddy-blog-posts"
   ],
   "textdomain": "groww-buddy",
   "editorScript": "file:./index.js",
@@ -20,7 +21,7 @@
   "render": "file:./render.php",
   "example": {},
   "attributes": {
-    "membersStyles": {
+    "blogPostsStyles": {
       "type": "object",
       "default": {
         "membersLayout": "list",
@@ -28,7 +29,7 @@
         "itemBgHoverColor": "#f9f9f9"
       }
     },
-    "membersSettings": {
+    "blogPostsSettings": {
       "type": "object",
       "default": {
         "filter": "filter_by",
