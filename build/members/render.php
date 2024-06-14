@@ -6,16 +6,6 @@
  */
 
 // Generate a unique cache key based on the attributes
-$cache_key = 'groww_buddy_members_' . md5( maybe_serialize( $attributes ) );
-$cached_output = get_transient( $cache_key );
-
-//if ( $cached_output !== false ) {
-//	$allowed_html = wp_kses_allowed_html( 'post');
-//	$allowed_html['style'] = array();
-//	echo wp_kses( $cached_output,$allowed_html );
-//    return;
-//}
-
 $membersStyles = isset( $attributes['membersStyles'] ) ? $attributes['membersStyles'] : array();
 $membersSettings = isset( $attributes['membersSettings'] ) ? $attributes['membersSettings'] : array();
 $membersLayout = isset( $membersStyles['membersLayout'] ) ? $membersStyles['membersLayout'] : 'grid';
@@ -30,7 +20,7 @@ if ( $membersSettings['filter'] === 'filter_by' ) {
 	$rest_args['search'] = isset( $membersSettings['search'] ) ? $membersSettings['search'] : '';
 }
 
-$bp_members = growwbuddy_utils()->get_rest_data( '/buddyboss/v1/members', 'GET', $rest_args );
+$gb_members = growwbuddy_utils()->get_rest_data( '/buddyboss/v1/members', 'GET', $rest_args );
 
 $classes          = array();
 
@@ -63,12 +53,12 @@ ob_start();
 </style>
     <div <?php echo wp_kses_post( $container_attributes ); ?>>
         <?php
-        if ( ! empty( $bp_members ) && is_array( $bp_members ) ) {
-	        foreach ( $bp_members as $bp_member ) {
-		        $avatar_url         = $bp_member['avatar_urls']['thumb'];
-		        $name               = $bp_member['name'];
-		        $last_active        = bp_get_member_last_active( $bp_member['id'] );
-		        $member_profile_url = $bp_member['link'];
+        if ( ! empty( $gb_members ) && is_array( $gb_members ) ) {
+	        foreach ( $gb_members as $gb_member ) {
+		        $avatar_url         = $gb_member['avatar_urls']['thumb'];
+		        $name               = $gb_member['name'];
+		        $last_active        = bp_get_member_last_active( $gb_member['id'] );
+		        $member_profile_url = $gb_member['link'];
 
 		        ?>
                 <div class="groww-buddy-card">
@@ -88,8 +78,7 @@ ob_start();
 $output = ob_get_clean();
 
 // Cache the rendered output for 12 hours
-set_transient( $cache_key, $output, 12 * HOUR_IN_SECONDS );
 
-$allowed_html = wp_kses_allowed_html( 'post');
+$allowed_html          = wp_kses_allowed_html( 'post' );
 $allowed_html['style'] = array();
-echo wp_kses( $output,$allowed_html );
+echo wp_kses( $output, $allowed_html );

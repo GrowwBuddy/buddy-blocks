@@ -21,7 +21,7 @@
   "render": "file:./render.php",
   "example": {},
   "attributes": {
-    "blogPostsStyles": {
+    "postsStyles": {
       "type": "object",
       "default": {
         "membersLayout": "list",
@@ -29,7 +29,7 @@
         "itemBgHoverColor": "#f9f9f9"
       }
     },
-    "blogPostsSettings": {
+    "postsSettings": {
       "type": "object",
       "default": {
         "filter": "filter_by",

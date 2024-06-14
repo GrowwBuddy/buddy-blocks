@@ -13,7 +13,6 @@ import RenderMembers from "./components/RenderMembers";
 
 function Edit( props ) {
     const { attributes, setAttributes } = props;
-    console.log(attributes);
     const { membersLayout } = attributes.membersStyles;
     const blockProps = useBlockProps( {
         className: 'groww-buddy-members-blocks ' + (membersLayout === 'grid' ? 'groww-buddy-members-blocks--grid' : 'groww-buddy-members-blocks--list')

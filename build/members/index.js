@@ -13,7 +13,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   GroupsSettingsProvider: () => (/* binding */ GroupsSettingsProvider),
 /* harmony export */   GroupsStylesProvider: () => (/* binding */ GroupsStylesProvider),
 /* harmony export */   MembersSettingsProvider: () => (/* binding */ MembersSettingsProvider),
-/* harmony export */   MembersStylesProvider: () => (/* binding */ MembersStylesProvider)
+/* harmony export */   MembersStylesProvider: () => (/* binding */ MembersStylesProvider),
+/* harmony export */   PostsSettingsProvider: () => (/* binding */ PostsSettingsProvider),
+/* harmony export */   PostsStylesProviders: () => (/* binding */ PostsStylesProviders)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -22,6 +24,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+/** Posts Block providers */
+
+const PostsStylesProviders = ({
+  children,
+  initialStyles,
+  setAttributes
+}) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Providers_StylesProvider__WEBPACK_IMPORTED_MODULE_1__.StylesProvider, {
+  children: children,
+  initialStyles: initialStyles,
+  setAttributes: setAttributes,
+  blockKey: "postsStyles"
+});
+const PostsSettingsProvider = ({
+  children,
+  initialSettings,
+  setAttributes
+}) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Providers_GenericProvider__WEBPACK_IMPORTED_MODULE_2__.GenericProvider, {
+  initialData: initialSettings,
+  setAttributes: setAttributes,
+  dataKey: "postsSettings"
+}, children);
+
+/** End Posts Block providers */
 
 /** Members Block Providers */
 const MembersStylesProvider = ({
@@ -287,15 +313,16 @@ const BackGroundColor = ({
     key: tabs[0].key,
     ...tabs[0],
     colorGradientControlSettings: colorGradientControlSettings
-  }), tabs.length > 1 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Tabs, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TabList, null, tabs.map(tab => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Tab, {
+  }), tabs.length > 1 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Tabs, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Tabs.TabList, null, tabs.map(tab => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Tabs.Tab, {
     key: tab.key,
     tabId: tab.key
-  }, tab.label))), tabs.map(tab => {
+  }, tab.label, console.log(tab.key)))), tabs.map(tab => {
     const {
       key: tabKey,
       ...restTabProps
     } = tab;
-    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TabPanel, {
+    console.log(tabKey);
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Tabs.TabPanel, {
       key: tabKey,
       tabId: tabKey,
       focusable: false
@@ -509,9 +536,6 @@ const RenderMembers = ({
   attributes
 }) => {
   const memoizedAttributes = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useMemo)(() => attributes, [attributes]);
-  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
-    console.log('RenderMembers re-rendered');
-  });
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)((_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_2___default()), {
     block: "groww-buddy/members",
     attributes: memoizedAttributes,
@@ -559,7 +583,6 @@ function Edit(props) {
     attributes,
     setAttributes
   } = props;
-  console.log(attributes);
   const {
     membersLayout
   } = attributes.membersStyles;
